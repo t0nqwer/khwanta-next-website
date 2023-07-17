@@ -5,10 +5,10 @@ import SuggestProduct from "@components/Home/SuggestProduct";
 import useNavBar from "@Zustand/navbarMenu";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-export const metadata = {
-  title: "Khwanta",
-  description: "Thai Wisdom to International Fashion",
-};
+// export const metadata = {
+//   title: "Khwanta",
+//   description: "Thai Wisdom to International Fashion",
+// };
 export default function Page({ params: { lng } }) {
   const router = useRouter();
   const setScrolled = useNavBar((state) => state.setScrolled);
