@@ -25,10 +25,7 @@ const Tenor = Tenor_Sans({
   weight: "400",
   variable: "--font_Tenor",
 });
-export const metadata = {
-  title: "Khwanta",
-  description: "Thai Wisdom to International Fashion",
-};
+
 export default function RootLayout({ children, params: { lng } }) {
   const IsActive = useMenuactive((state) => state.IsActive);
   const pathname = usePathname();
