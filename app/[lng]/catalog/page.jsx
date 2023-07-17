@@ -1,0 +1,21 @@
+import Feed from "@components/Feed";
+import Image from "next/image";
+const page = () => {
+  return (
+    <div className=" pt-[60px] pb-20">
+      <div className="w-full h-96">
+        <Image
+          src="/DSC_7949-co.jpg"
+          className="object-cover object-center"
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+      </div>
+      <Feed />
+    </div>
+  );
+};
+
+export default page;
