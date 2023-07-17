@@ -25,7 +25,7 @@ const ProductSchema = new Schema({
   fabric: { type: Schema.Types.ObjectId, ref: Fabric },
   price: { type: Number, required: true },
   detail: { type: [subDetailSchema], required: true },
-  description: { type: String, required: true },
+  description: { type: String },
   image: { type: [subImageSchema], required: true },
   category: { type: Schema.Types.ObjectId, ref: Category },
   brand: { type: Schema.Types.ObjectId, ref: Brand },
