@@ -39,13 +39,13 @@
     @apply relative p-0 font-normal outline-none cursor-pointer;
   }
   .link::before {
-    @apply content-['']  absolute -bottom-[4px] bg-primary-500  h-[2px] duration-150 rounded-full w-0;
+    @apply content-['']  absolute -bottom-[4px]   h-[2px] duration-150 rounded-full w-0;
   }
   .linkwhite {
     @apply relative p-0 font-normal outline-none cursor-pointer;
   }
   .linkwhite::before {
-    @apply content-['']  absolute -bottom-[4px] bg-white h-[2px] duration-150 rounded-full w-0;
+    @apply content-['']  absolute -bottom-[4px]  h-[2px] duration-150 rounded-full w-0;
   }
   .linkwhite:hover::before {
     @apply w-[117px];
@@ -111,7 +111,7 @@
     @apply duration-300 -translate-x-1;
   }
   .close_button {
-    @apply absolute left-7 top-8 w-[18px] h-[18px] rotate-45 cursor-pointer;
+    @apply absolute left-7 top-8 w-[25px] h-[25px] rotate-45 cursor-pointer;
   }
   .close_button::before,
   .close_button::after {
@@ -315,6 +315,9 @@
     box-shadow: -24px 0 #fff, 24px 0 #fff;
     box-sizing: border-box;
     animation: shadowPulse 2s linear infinite;
+  }
+  .svg {
+    fill: #a1000e;
   }
 
   @keyframes shadowPulse {

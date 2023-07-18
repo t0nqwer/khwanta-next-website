@@ -10,8 +10,10 @@ import { useEffect } from "react";
 //   description: "Thai Wisdom to International Fashion",
 // };
 export default function Page({ params: { lng } }) {
+  console.log(lng);
   const router = useRouter();
   const setScrolled = useNavBar((state) => state.setScrolled);
+  const setColor = useNavBar((state) => state.setColor);
   const handleScroll = () => {
     const element = document.getElementById("maindiv");
     const scrollPosition = element.scrollTop;
@@ -31,6 +33,7 @@ export default function Page({ params: { lng } }) {
   };
   useEffect(() => {
     setScrolled(false);
+    setColor(null);
   }, []);
 
   return (

@@ -4,8 +4,8 @@ export const links = [
     pathname: "/",
   },
   {
-    title: "ร้านค้า",
-    pathname: "/shop",
+    title: "Catalog",
+    pathname: "/catalog",
   },
   {
     title: "ความเป็นมา",

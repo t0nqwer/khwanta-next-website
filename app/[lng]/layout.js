@@ -37,8 +37,8 @@ export default function RootLayout({ children, params: { lng } }) {
       <body className="">
         <Toaster />
         {isLoading && <Loading />}
+        {IsActive && <Menu lng={lng} />}
         <NavBar lng={lng} />
-        {IsActive && <Menu />}
         <div>{children}</div>
       </body>
     </html>
