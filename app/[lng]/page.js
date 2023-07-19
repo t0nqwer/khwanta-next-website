@@ -14,6 +14,7 @@ export default function Page({ params: { lng } }) {
   const router = useRouter();
   const setScrolled = useNavBar((state) => state.setScrolled);
   const setColor = useNavBar((state) => state.setColor);
+  const setNavShow = useNavBar((state) => state.setNavShow);
   const handleScroll = () => {
     const element = document.getElementById("maindiv");
     const scrollPosition = element.scrollTop;
@@ -25,21 +26,25 @@ export default function Page({ params: { lng } }) {
     } else {
       document.getElementById("maindiv").classList.add("snap-mandatory");
     }
-    if (scrollPosition > 0) {
+    console.log(scrollPosition);
+    if (scrollPosition > 399) {
       setScrolled(true);
+      setNavShow(true);
     } else {
       setScrolled(false);
+      setNavShow(false);
     }
   };
   useEffect(() => {
     setScrolled(false);
     setColor(null);
+    setNavShow(false);
   }, []);
 
   return (
-    <div id="maindiv" className={` h-screen overflow-y-scroll w-screen`} onScroll={handleScroll}>
+    <div id="maindiv" className={` h-screen overflow-y-scroll overflow-x-hidden w-screen`} onScroll={handleScroll}>
       <div className="w-full h-screen snap-start ">
-        <Hero />
+        <Hero lng={lng} />
       </div>
       <div className="w-full h-screen snap-start ">
         <SuggestProduct />
