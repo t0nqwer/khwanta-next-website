@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import Card from "./Card";
-import SmallLoader from "./SmallLoader";
+
 const Feed = ({ lng }) => {
   const [loading, setLoading] = useState(false);
   const [Products, setProducts] = useState([]);
@@ -40,11 +40,7 @@ const Feed = ({ lng }) => {
           </div>
         ))}
       </div>
-      {loading && (
-        <div className="flex justify-center w-full">
-          <SmallLoader />
-        </div>
-      )}
+      {loading && <div className="flex justify-center w-full"></div>}
     </>
   );
 };

@@ -68,13 +68,18 @@ const NavBar = ({ lng }) => {
           }}>
           <div className=" fourdot__container">
             <div
-              className={` fourdot after:bg-primary-500 ${
+              className={` fourdot  ${
                 isScrolled
                   ? "after:bg-primary-500 before:bg-primary-500"
-                  : `after:bg-${color ? color : "white"} before:bg-${color ? color : "white"} `
-              } `}></div>
+                  : `${color ? `after:bg-${color} before:bg-${color}` : "after:bg-white before:bg-white"}`
+              }`}
+              style={{
+                content: {
+                  backgroundColor: "#a1000e",
+                },
+              }}></div>
             <div
-              className={` fourdot after:bg-primary-500 ${
+              className={` fourdot 0 ${
                 isScrolled
                   ? "after:bg-primary-500 before:bg-primary-500"
                   : `after:bg-${color ? color : "white"} before:bg-${color ? color : "white"} `
