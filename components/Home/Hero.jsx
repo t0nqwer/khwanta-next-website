@@ -11,6 +11,7 @@ const Hero = ({ lng }) => {
   const [count, setCount] = useState(0);
   const setNavShow = useNavBar((state) => state.setNavShow);
   const setScrolled = useNavBar((state) => state.setScrolled);
+  const isScrolled = useNavBar((state) => state.isScrolled);
   const [currentImage, setCurrentImage] = useState(null);
   const changeImage = () => {
     console.log(ImageUrl);
@@ -40,9 +41,12 @@ const Hero = ({ lng }) => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const scrollHandler = (e) => {
+    console.log(e);
+  };
   return (
-    <div className="relative w-full sm:h-screen h-3/4   bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-200 from-60%   to-primary-300">
-      <div className="absolute top-0 left-0 flex justify-center w-full h-full z-100 ">
+    <div className="relative w-full h-screen  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-light-300 from-60%   to-light-500">
+      <div className="absolute top-0 left-0 flex justify-center w-full h-full z-100 " onScroll={scrollHandler}>
         <div
           className="  w-[300px] h-full"
           onMouseOver={() => {
@@ -54,7 +58,13 @@ const Hero = ({ lng }) => {
             document.getElementById("image-slide").classList.remove("scale-110");
           }}></div>
       </div>
-      <div className="absolute h-1 rounded-full w-11 bg-light-500 top-10 left-10"></div>
+      <div className="absolute rounded-full top-10 left-10">
+        {" "}
+        <h1 className="text-3xl tracking-widest align-middle select-none text-primary-500 font-secondary drop-shadow-md h-fit">
+          KHWANTA <br /> COLLECTION 2023
+        </h1>
+        <div className="w-full h-1 bg-primary-500" />
+      </div>
       <div id="image-slide" className="absolute top-0 left-0 w-full h-full transition-all duration-300 ">
         {ImageUrl && (
           <Image
@@ -71,23 +81,24 @@ const Hero = ({ lng }) => {
           />
         )}
       </div>
-      <div id="" className="top-0 left-0 z-50 flex items-center w-full h-full ">
-        <div className="w-full transition-all tracking-widest text-center align-middle cursor-pointer select-none text-light-500 font-secondary text-[150px] drop-shadow-md ">
-          <h1>KHWANTA</h1>
+      <div id="" className="top-0 left-0 z-50 flex items-center justify-center w-full h-full ">
+        <div className=" transition-all tracking-widest text-center align-middle bg-light-300 bg-opacity-0  cursor-pointer select-none text-primary-500 font-secondary text-[150px] drop-shadow-lg ">
+          {!isScrolled && (
+            <h1 id="khwanta" className="">
+              KHWANTA
+            </h1>
+          )}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 flex items-end justify-between w-full  p-10 p z-[200]">
-        <h1 className="text-3xl tracking-widest text-center align-middle select-none text-light-500 font-secondary drop-shadow-md h-fit">
-          KHWANTA COLLECTION 2023
-        </h1>
+      <div className="absolute bottom-0 right-0 flex items-end justify-between p-10 p z-[200]">
         <div
-          className="px-5 py-2 border cursor-pointer border-light-500"
+          className="px-5 py-2 border cursor-pointer border-primary-500 hover:scale-110"
           onClick={() => {
             router.push(`${lng}/catalog`);
             setNavShow(true);
             setScrolled(true);
           }}>
-          <h1 className="text-xl tracking-widest text-center align-middle cursor-pointer select-none text-light-500 font-secondary drop-shadow-md h-fit">
+          <h1 className="text-xl tracking-widest text-center align-middle cursor-pointer select-none text-primary-500 font-secondary drop-shadow-md h-fit">
             VIEW COLLECTION
           </h1>
         </div>

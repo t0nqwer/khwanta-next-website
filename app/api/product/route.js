@@ -11,7 +11,6 @@ export const GET = async (request, { params }) => {
   try {
     await connectToDatabase();
     const data = await Product.find().populate("category fabric");
-    console.log(data);
 
     return new Response(JSON.stringify(data), { status: 201 });
   } catch (error) {

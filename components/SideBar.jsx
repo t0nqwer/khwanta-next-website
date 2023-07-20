@@ -14,7 +14,7 @@ const SideBar = () => {
       <div className="flex flex-col items-center justify-between h-full py-5 ">
         <div className="mt-3">
           <Link href={`/kt-admin`}>
-            <Image src="/logo-s-black.png" className="" width={176} height={64} />
+            <Image src="/logo-s-black.png" alt="OldLOgo" className="" width={176} height={64} />
           </Link>
         </div>
         <div className="flex flex-col justify-center w-full h-full px-10 space-y-4 text-2xl font-normal">

@@ -142,10 +142,12 @@ const page = ({ params }) => {
         contentType: Front.type,
       };
       const file = Front;
-      const fileRef = ref(storage, `${type}/front/${Product.code}${Product.fabric.Fabric_ID}front`);
+      const fileRef = ref(storage, `${type}/front/${Product.code}${Product.fabric.id}front`);
       const uploadTaskSnapshot = await uploadBytes(fileRef, file, metadata);
       getDownloadURL(uploadTaskSnapshot.ref).then((url) => {
+        console.log(url);
         toast.success("เปลี่ยนรูปเรียบร้อย");
+        setFrontUrl(Product.image[0].url);
       });
     }
     if (Ref === "Back") {
@@ -153,17 +155,19 @@ const page = ({ params }) => {
       const metadata = {
         contentType: Back.type,
       };
-      const fileRef = ref(storage, `${type}/back/${Product.code}${Product.fabric.Fabric_ID}back`);
+      const fileRef = ref(storage, `${type}/back/${Product.code}${Product.fabric.id}back`);
       const uploadTaskSnapshot = await uploadBytes(fileRef, file, metadata);
       getDownloadURL(uploadTaskSnapshot.ref).then((url) => {
+        console.log(url);
         toast.success("เปลี่ยนรูปเรียบร้อย");
+        setBackUrl(Product.image[1].url);
       });
     }
   };
   const addImage = async (e) => {
     setIsLoading(true);
     const file = e.target.files[0];
-    const fileRef = ref(storage, `Product/detail/${Product.code}${Product.fabric.Fabric_ID}-${new Date().getTime()}`);
+    const fileRef = ref(storage, `Product/detail/${Product.code}${Product.fabric.id}-${new Date().getTime()}`);
     const uploadTaskSnapshot = await uploadBytes(fileRef, file);
     const downloadurl = await getDownloadURL(uploadTaskSnapshot.ref);
     const response = await fetch(`${url}/web/adddetailphoto`, {

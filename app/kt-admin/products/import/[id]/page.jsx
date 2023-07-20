@@ -259,6 +259,7 @@ const page = ({ params }) => {
       const fileRef = ref(storage, `${type}/front/${Product.code}${Product.fabric.Fabric_ID}front`);
       const uploadTaskSnapshot = await uploadBytes(fileRef, file, metadata);
       getDownloadURL(uploadTaskSnapshot.ref).then((url) => {
+        log;
         toast.success("เปลี่ยนรูปเรียบร้อย");
         fetchData();
       });

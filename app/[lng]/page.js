@@ -15,6 +15,7 @@ export default function Page({ params: { lng } }) {
   const setScrolled = useNavBar((state) => state.setScrolled);
   const setColor = useNavBar((state) => state.setColor);
   const setNavShow = useNavBar((state) => state.setNavShow);
+
   const handleScroll = () => {
     const element = document.getElementById("maindiv");
     const scrollPosition = element.scrollTop;
@@ -26,8 +27,7 @@ export default function Page({ params: { lng } }) {
     } else {
       document.getElementById("maindiv").classList.add("snap-mandatory");
     }
-    console.log(scrollPosition);
-    if (scrollPosition > 399) {
+    if (scrollPosition > 0) {
       setScrolled(true);
       setNavShow(true);
     } else {
@@ -43,7 +43,7 @@ export default function Page({ params: { lng } }) {
 
   return (
     <div id="maindiv" className={` h-screen overflow-y-scroll overflow-x-hidden w-screen`} onScroll={handleScroll}>
-      <div className="w-full h-screen snap-start ">
+      <div className="sticky w-full h-screen snap-start ">
         <Hero lng={lng} />
       </div>
       <div className="w-full h-screen snap-start ">
