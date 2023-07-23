@@ -29,7 +29,7 @@ const SuggestProduct = ({ lng }) => {
           product.map((item) => (
             <div
               key={item._id}
-              className="relative w-full h-full overflow-hidden text-xl font-primary"
+              className="relative w-full h-full overflow-hidden text-xl cursor-pointer font-primary"
               onMouseOut={(e) => {
                 e.preventDefault();
                 document.getElementById(`${item?._id}-image`).classList.remove(`scale-110`);

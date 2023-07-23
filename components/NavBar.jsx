@@ -20,7 +20,7 @@ const NavBar = ({ lng }) => {
     <>
       {isNavShow && (
         <div
-          className={`${Tenor.className} fixed z-40 px-10 max-lg:px-5 ${
+          className={`${Tenor.className} fixed z-[300] px-10 max-lg:px-5 ${
             isScrolled
               ? "h-[60px] text-primary-500 bg-white bg-opacity-30  backdrop-blur-md"
               : `h-[120px] text-${color ? color : "white"} `

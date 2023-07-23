@@ -1,6 +1,8 @@
 "use client";
 import BrandStory from "@components/Home/BrandStory";
+import FooterHome from "@components/Home/FooterHome";
 import Hero from "@components/Home/Hero";
+import KhwantaQuote from "@components/Home/KhwantaQuote";
 import SuggestProduct from "@components/Home/SuggestProduct";
 import useNavBar from "@Zustand/navbarMenu";
 import { useRouter } from "next/navigation";
@@ -43,16 +45,21 @@ export default function Page({ params: { lng } }) {
 
   return (
     <div id="maindiv" className={` h-screen overflow-y-scroll overflow-x-hidden w-screen`} onScroll={handleScroll}>
-      <div className="sticky w-full h-screen snap-start ">
+      <div className="w-full h-screen snap-start">
         <Hero lng={lng} />
+      </div>
+      <div className="w-full snap-start ">
+        <KhwantaQuote />
       </div>
       <div className="w-full h-screen snap-start ">
         <SuggestProduct lng={lng} />
       </div>
-      <div className="w-full h-screen snap-center">
+      <div className="w-full snap-center">
         <BrandStory />
       </div>
-      <div className=" h-[500px] w-full ">{/* <SuggestProduct />  */}</div>
+      <div className="w-full ">
+        <FooterHome lng={lng} />
+      </div>
     </div>
   );
 }

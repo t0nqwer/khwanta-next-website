@@ -45,7 +45,7 @@ const Hero = ({ lng }) => {
   };
   return (
     <div className="relative w-full h-screen  bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-light-300 from-60%   to-light-500">
-      <div className="absolute top-0 left-0 flex justify-center w-full h-full z-100 " onScroll={scrollHandler}>
+      <div className="absolute top-0 left-0 z-50 flex justify-center w-full h-full " onScroll={scrollHandler}>
         <div
           className="  w-[300px] h-full"
           onMouseOver={() => {
@@ -89,7 +89,7 @@ const Hero = ({ lng }) => {
           )}
         </div>
       </div>
-      <div className="absolute bottom-0 right-0 flex items-end justify-between p-10 p z-[200]">
+      <div className="absolute bottom-0 right-0 flex items-end justify-between p-10 z-100 p">
         <div
           className="px-5 py-2 border cursor-pointer border-primary-500 hover:scale-110"
           onClick={() => {
