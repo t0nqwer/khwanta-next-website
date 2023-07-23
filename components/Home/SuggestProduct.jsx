@@ -48,16 +48,16 @@ const SuggestProduct = ({ lng }) => {
               className="relative w-full h-full overflow-hidden text-xl cursor-pointer font-primary"
               onMouseOut={(e) => {
                 e.preventDefault();
-                if (window.innerWidth > 425) {
+                if (window.innerWidth > 850) {
                   document.getElementById(`${item?._id}-image`).classList.remove(`scale-110`);
-                  document.getElementById(`${item._id}`).classList.add(`opacity-0`);
+                  document.getElementById(`${item._id}`).classList.add(`lg:opacity-0`);
                 }
               }}
               onMouseOver={(e) => {
                 e.preventDefault();
-                if (window.innerWidth > 425) {
+                if (window.innerWidth > 850) {
                   document.getElementById(`${item?._id}-image`).classList.add(`scale-110`);
-                  document.getElementById(`${item._id}`).classList.remove(`opacity-0`);
+                  document.getElementById(`${item._id}`).classList.remove(`lg:opacity-0`);
                 }
               }}
               onClick={() => router.push(`/${lng}/product/${item._id}`)}>

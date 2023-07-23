@@ -68,7 +68,7 @@ const Hero = ({ lng, scrollPosition }) => {
       </div>
       <div
         id="collectiontext"
-        className="absolute top-5 left-10 max-[420px]:top-15 max-[420px]:left-3 max-[425px]:hidden ">
+        className="absolute top-5 left-10 max-[420px]:top-15 max-[420px]:left-3 max-[850px]:hidden ">
         <h1 className="text-3xl sticky max-[320px]:text-base max-[425px]:text-base tracking-widest align-middle select-none text-primary-500 font-secondary drop-shadow-md h-fit transition-transform">
           KHWANTA <br /> COLLECTION <br /> 2023
         </h1>
@@ -94,7 +94,7 @@ const Hero = ({ lng, scrollPosition }) => {
       <div id="" className="top-0 left-0 z-50 flex items-center justify-center w-full h-full ">
         <div
           id="khwantatext"
-          className=" transition-all tracking-widest text-center align-middle bg-light-300 bg-opacity-0  max-[425px]:bg-opacity-30  cursor-pointer select-none text-primary-500 font-secondary text-[150px] max-[425px]:text-[60px] max-[425px]:backdrop-blur-sm max-[320px]:text-[40px] backdrop-opacity-90 duration-500 ">
+          className=" transition-all tracking-widest text-center align-middle bg-light-300 bg-opacity-0  max-[425px]:bg-opacity-30  cursor-pointer select-none text-primary-500 font-secondary text-[150px] max-[425px]:text-[60px] max-[850px]:text-[100px] max-[425px]:backdrop-blur-sm max-[320px]:text-[40px] backdrop-opacity-90 duration-500 ">
           <h1 id="khwanta" className="transition-all textshadow text-shadow-lg drop-shadow-lg ">
             KHWANTA
           </h1>

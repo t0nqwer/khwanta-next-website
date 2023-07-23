@@ -41,7 +41,7 @@ const Feed = ({ lng }) => {
   // });
   return (
     <>
-      <div className="grid grid-cols-4 max-md:grid-cols-3 max-[425px]:grid-cols-2">
+      <div className="grid grid-cols-4 max-md:grid-cols-3 max-[425px]:grid-cols-2 pb-20">
         {Products.map((item) => (
           <div key={item._id}>
             <Card lng={lng} img={item?.image[0].url} alt={item?.name} height={height} data={item} />

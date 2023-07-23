@@ -5,11 +5,11 @@ const BrandStory = () => {
   const textdiv =
     "px-2 pt-3 text-2xl max-[425px]:text-xl font-light tracking-wider text-center text-light-500 font-primary";
   return (
-    <div className="relative w-full px-20 overflow-hidden py-36 max-[425px]:py-16 h-fit bg-primary-500 max-[425px]:px-5">
+    <div className="relative w-full px-20 max-xl:px-5 overflow-hidden max-xl:py-20  py-36 max-[425px]:py-16 h-fit bg-primary-500 max-[425px]:px-5">
       <div className="w-full text-5xl max-[425px]:text-4xl text-center font-secondary text-light-500">
         Our Craft Journey
       </div>
-      <div className="grid grid-cols-3 max-[425px]:grid-cols-1    gap-5 px-10 max-[425px]:px-1 pt-10 ">
+      <div className="grid grid-cols-3 max-lg:grid-cols-1 max-lg:px-10  max-[425px]:grid-cols-1    gap-5 px-10 max-[425px]:px-1 pt-10 ">
         <div className="w-full h-full ">
           <div className={imgdiv}>
             <Image

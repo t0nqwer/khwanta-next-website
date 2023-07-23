@@ -33,15 +33,15 @@ const NavBar = ({ lng }) => {
           className={`${Tenor.className} fixed z-[300] px-10 max-lg:px-5 max-[425px]:px-2 ${
             isScrolled
               ? "h-[60px] text-primary-500 bg-light-500 bg-opacity-30  backdrop-blur-md"
-              : `h-[120px] text-${color ? color : "white"} `
+              : `h-[80px] text-${color ? color : "white"} `
           } flex justify-center w-full items-center   transition-all `}>
           <div
-            className={` flex max-[450px]:justify-center justify-between w-4/5 max-[425px]:w-full  h-full ${
+            className={` flex max-[850px]:justify-center justify-between w-4/5 max-[850px]:w-full  h-full ${
               isScrolled ? "border-b-0" : `${color ? "" : ""} border-white`
             }  items-center`}>
             {/* menu */}
             <div
-              className="w-52 max-[450px]:absolute  max-[450px]:left-0 max-[450px]:w-fit   parent z-[200] "
+              className="w-52 max-[850px]:absolute max-[850px]:left-5  max-[425px]:left-0 max-[850px]:w-fit   parent z-[200] "
               onClick={() => {
                 setIsactive();
                 setScrolled(true);

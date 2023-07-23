@@ -50,7 +50,7 @@ export default function Page({ params: { lng } }) {
     <div id="maindiv" className={` h-screen overflow-y-scroll overflow-x-hidden w-screen `} onScroll={handleScroll}>
       <div className="w-full snap-start">
         <div
-          className="sm:hidden text-3xl sticky max-[320px]:text-base max-[425px]:text-base tracking-widest align-middle select-none text-primary-500 font-secondary drop-shadow-md h-0 transition-transform  top-20 left-5 w-fit "
+          className="md:hidden text-3xl sticky max-[320px]:text-base max-[425px]:text-base tracking-widest align-middle select-none text-primary-500 font-secondary drop-shadow-md h-0 transition-transform  top-20 left-5 w-fit "
           style={{ top: `${isScrolled ? "60px" : "20px"}` }}>
           KHWANTA <br /> COLLECTION <br /> 2023
         </div>

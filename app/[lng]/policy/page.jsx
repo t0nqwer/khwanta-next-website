@@ -15,7 +15,7 @@ const page = () => {
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
       </div>
-      <div className="px-[200px] pt-20">
+      <div className="px-[200px] pt-20 max-md:px-20 max-[425px]:px-10">
         <h1 className={header}>ข้อกำหนดและเงื่อนไข การจัดส่งสินค้า</h1>
         <ul className="mt-5 text-lg list-decimal ">
           <li className="py-2">สินค้าทุกชิ้นจัดส่งฟรี</li>
@@ -66,7 +66,30 @@ const page = () => {
           </li>
           <li className="py-2">
             การคืนเงิน
-            <table className="py-2 ">
+            <p className="py-2">8.1 กรณีซื้อสินค้าจากหน้าร้าน</p>
+            <table className="w-full py-2 ">
+              <thead>
+                <tr className="text-center border ">
+                  <th className="w-1/2">วิธีการชำระเงิน</th>
+                  <th className="w-1/2">วิธีการคืนเงิน</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="font-normal text-center border ">
+                  <td className="px-2 py-2">บัตรเครดิต หรือบัตรเดบิต</td>
+                  <td className="px-2 py-2">
+                    ทางร้านจะคืนเงินให้ลูกค้า เป็นเงินโอนเข้าบัญชีธนาคาร โดยจะคืนเป็นยอดเงิน
+                    หลังจากหักค่าบริการผู้ให้บริการบัตรเครดิต
+                  </td>
+                </tr>
+                <tr className="font-normal text-center border ">
+                  <td className="px-2 py-2">ชำระด้วยเงินสด, ชำระเงินอิเล็กทรอนิกส์ หรือ QR Code</td>
+                  <td className="px-2 py-2"> ทางร้านจะคืนเงินให้ลูกค้า เป็นเงินโอนเข้าบัญชีธนาคารเต็มจำนวน</td>
+                </tr>
+              </tbody>
+            </table>
+            <p className="py-2">8.2 กรณีซื้อสินค้าจากทางออนไลน์</p>
+            <table className="w-full py-2 ">
               <thead>
                 <tr className="text-center border ">
                   <th className="w-1/2">วิธีการชำระเงิน</th>
@@ -79,25 +102,15 @@ const page = () => {
                   <td className="px-2 py-2">เราจะคืนเงินเข้าบัตรที่คุณลูกค้าทำรายการ</td>
                 </tr>
                 <tr className="font-normal text-center border ">
-                  <td className="px-2 py-2">
-                    ชำระด้วยเงินสด, ชำระเงินอิเล็กทรอนิกส์ หรือ QR Code (เมื่อซื้อสินค้าที่หน้าร้านสาขา)
-                  </td>
-                  <td className="px-2 py-2">เราจะคืนเงินเป็นเงินสดที่หน้าเคาท์เตอร์แคชเชียร์เท่านั้น</td>
-                </tr>
-                <tr className="font-normal text-center border ">
-                  <td className="px-2 py-2">สั่งซื้อออนไลน์ ชำระเงินที่หน้าร้าน (บริการ Pay In Store)</td>
-                  <td className="px-2 py-2">
-                    ลูกค้าต้องคืนสินค้าหน้าเคาท์เตอร์แคชเชียร์ที่ร้านสาขาที่ทำการชำระเงิน
-                    โดยจะได้รับคืนเงินจะขึ้นอยู่กับวิธีการชำระเงิน
-                  </td>
+                  <td className="px-2 py-2">ชำระเงินอิเล็กทรอนิกส์ , โอนเข้าบัญช๊ธนาคาร หรือ QR Code</td>
+                  <td className="px-2 py-2">ทางร้านจะคืนเงินให้ลูกค้า เป็นเงินโอนเข้าบัญชีธนาคารเต็มจำนวน</td>
                 </tr>
               </tbody>
             </table>
           </li>
           <li className="py-2">
-            ทางร้านขอสงวนสิทธิ์ไม่รับเปลี่ยน หรือคืนสินค้าโปรโมชั่น สินค้าลดราคา หรือ สินค้าที่ทำการสั่งซื้อใน
-            ช่วงการลดราคาระหว่าง Mid-Season, End Of Season และช่วงลดราคาต่าง ๆ และสินค้าที่ไม่อยู่ใน
-            สภาพเดิมตามที่กล่าวไว้ข้างต้น รวมไปถึงสินค้าที่แก้ไขพิเศษ
+            ทางร้านขอสงวนสิทธิ์ไม่รับเปลี่ยน หรือคืนสินค้าโปรโมชั่น และสินค้าลดราคาและสินค้าที่ไม่อยู่ใน
+            สภาพเดิมตามที่กล่าวไว้ข้างต้น รวมไปถึงสินค้าที่ลูกค้าสั่งแก้ไขพิเศษ
           </li>
         </ul>
       </div>

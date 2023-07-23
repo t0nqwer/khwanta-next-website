@@ -2,12 +2,13 @@
 import Feed from "@components/Feed";
 import Image from "next/image";
 import useNavBar from "@Zustand/navbarMenu";
+import FooterHome from "@components/Home/FooterHome";
 const page = ({ params: { lng } }) => {
   const setScrolled = useNavBar((state) => state.setScrolled);
   setScrolled(true);
   return (
-    <div className=" pt-[60px] pb-20">
-      <div className="w-full h-96 max-[425px]:h-52">
+    <div className=" pt-[60px] ">
+      <div className="w-full h-96  max-[425px]:h-52">
         <Image
           src="/DSC_7949-co.jpg"
           className="object-cover object-center"
@@ -19,6 +20,7 @@ const page = ({ params: { lng } }) => {
         />
       </div>
       <Feed lng={lng} />
+      <FooterHome lng={lng} />
     </div>
   );
 };

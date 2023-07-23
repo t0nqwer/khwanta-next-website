@@ -7,14 +7,14 @@ export const links = [
     title: "Catalog",
     pathname: "/catalog",
   },
-  {
-    title: "ความเป็นมา",
-    pathname: "/history",
-  },
-  {
-    title: "ติดต่อเรา",
-    pathname: "/contact",
-  },
+  // {
+  //   title: "ความเป็นมา",
+  //   pathname: "/history",
+  // },
+  // {
+  //   title: "ติดต่อเรา",
+  //   pathname: "/contact",
+  // },
 ];
 
 export const adminlinks = [

@@ -28,9 +28,9 @@ const FooterHome = ({ lng }) => {
             <li className="py-2 cursor-pointer hover:underline " onClick={() => router.push(`${lng}/catalog`)}>
               แคตตาล็อกสินค้า
             </li>
-            <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/history`)}>
+            {/* <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/history`)}>
               เรื่องราวแบรนด์ขวัญตา
-            </li>
+            </li> */}
             <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/policy`)}>
               นโยบายจัดส่งสินค้า/การคืนเงิน/และการเปลี่ยนคืนหรือยกเลิกสินค้า
             </li>
