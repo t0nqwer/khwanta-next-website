@@ -14,7 +14,9 @@ const Menu = ({ lng }) => {
     setTimeout(setIsinactive, 390);
   };
   return (
-    <div id="menu" className={`${Tenor.className} w-full h-screen fixed flex  z-50 bg-primary-700 animate-slidedown`}>
+    <div
+      id="menu"
+      className={`${Tenor.className} w-full h-screen fixed flex  z-[400] bg-primary-700 animate-slidedown`}>
       <div className="absolute w-full z-100  h-[60px] px-10 flex justify-center  items-center   transition-all">
         <div className="relative w-4/5 h-full">
           <div className="close_button " onClick={closeMenu} />

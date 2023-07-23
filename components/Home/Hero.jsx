@@ -31,7 +31,7 @@ const Hero = ({ lng }) => {
     document.getElementById(ImageUrl)?.classList.add("opacity-0");
     setTimeout(() => {
       setImageUrl(currentImage);
-    }, 700);
+    }, 500);
   }, [currentImage]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Hero = ({ lng }) => {
             loading="lazy"
             placeholder="blur"
             blurDataURL={rgbDataURL(161, 0, 14)}
-            className="h-full transition-all duration-700 opacity-0 "
+            className="h-full transition-all duration-500 opacity-0 "
             onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           />
         )}
