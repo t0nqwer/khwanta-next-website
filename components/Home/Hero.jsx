@@ -75,7 +75,6 @@ const Hero = ({ lng }) => {
             height={0}
             sizes="100vw"
             style={{ width: "100%", height: "100%", objectFit: "contain" }}
-            loading="lazy"
             placeholder="blur"
             blurDataURL={rgbDataURL(161, 0, 14)}
             className="h-full transition-all duration-500 opacity-0 "
