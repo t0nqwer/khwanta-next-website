@@ -14,7 +14,7 @@ const SuggestProduct = ({ lng }) => {
       const datarecommend = data.hero.recommend.map((item) => {
         return { ...item.product, arrID: item._id };
       });
-      console.log(datarecommend);
+
       setProduct(datarecommend);
     }
   };

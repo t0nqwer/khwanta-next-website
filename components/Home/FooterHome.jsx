@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import SvgComponent from "@components/Logo";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { FaLine, FaInstagramSquare, FaFacebookSquare } from "react-icons/fa";
+import { BiLogoFacebookSquare } from "react-icons/bi";
+import Link from "next/link";
 
 const FooterHome = ({ lng }) => {
   const router = useRouter();
@@ -10,7 +13,7 @@ const FooterHome = ({ lng }) => {
   const fetchData = async () => {
     const response = await fetch("/api/contact");
     const data = await response.json();
-    console.log(data);
+
     setAbout(data);
   };
   useEffect(() => {
@@ -51,10 +54,22 @@ const FooterHome = ({ lng }) => {
               </>
             )}
           </div>
+          <div className="flex px-20 mt-5 space-x-10 text-5xl text-primary-500 ">
+            <FaLine className=" hover:cursor-pointer" onClick={() => window.open("https://lin.ee/M3rLQI1", "_blank")} />
+
+            <FaFacebookSquare
+              className=" hover:cursor-pointer"
+              onClick={() => window.open(`${about.facebook}`, "_blank")}
+            />
+            <FaInstagramSquare
+              className=" hover:cursor-pointer"
+              onClick={() => window.open(`${about.instagram}`, "_blank")}
+            />
+          </div>
         </div>
       </div>
       <div className="flex justify-center cursor-pointer ">
-        <SvgComponent fill={"#a1000e"} width={800} height={300} onClick={() => router.push("/")} />
+        <SvgComponent fill={"#a1000e"} width={800} height={250} onClick={() => router.push("/")} />
       </div>
       <div className="pb-3 text-center">© 2022 KHWANTA LIMITED PARTNERSHIP All rights reserved </div>
     </div>
