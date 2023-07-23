@@ -13,7 +13,7 @@ const Hero = ({ lng }) => {
   const setNavShow = useNavBar((state) => state.setNavShow);
   const setScrolled = useNavBar((state) => state.setScrolled);
   const isScrolled = useNavBar((state) => state.isScrolled);
-  const [currentImage, setCurrentImage] = useState(null);
+  const [currentImage, setCurrentImage] = useState("/web-5.png");
   const changeImage = () => {
     console.log(ImageUrl);
     const img = image.indexOf(ImageUrl);
