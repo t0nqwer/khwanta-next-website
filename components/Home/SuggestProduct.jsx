@@ -4,6 +4,7 @@ import Image from "next/image";
 import { rgbDataURL } from "@utils/blurimage";
 import { Thai } from "@utils/currency";
 import { useRouter } from "next/navigation";
+import { shuffle } from "@utils/fucntion";
 const SuggestProduct = ({ lng }) => {
   const router = useRouter();
   const [product, setProduct] = useState([]);
@@ -11,20 +12,35 @@ const SuggestProduct = ({ lng }) => {
     const response = await fetch("/api/product/recommend");
     if (response.ok) {
       const data = await response.json();
-      const datarecommend = data.hero.recommend.map((item) => {
-        return { ...item.product, arrID: item._id };
+      const datashuffle = shuffle(data.hero.recommend);
+      const datarecommend = datashuffle.map((item, i) => {
+        if (window.innerWidth <= 425 && i < 4) {
+          return { ...item.product, arrID: item._id };
+        }
+        if (window.innerWidth <= 850 && i < 6) {
+          console.log("you can");
+          return { ...item.product, arrID: item._id };
+        }
+        if (window.innerWidth > 850) {
+          console.log("you can");
+          return { ...item.product, arrID: item._id };
+        }
       });
-
-      setProduct(datarecommend);
+      const pro = datarecommend.filter((item, i) => item);
+      console.log(pro);
+      setProduct(pro);
     }
   };
   useEffect(() => {
     fetchProduct();
   }, []);
+  useEffect(() => {
+    console.log(product);
+  }, [product]);
 
   return (
-    <div className="relative h-screen overflow-hidden bg-primary-500">
-      <div className="grid w-full h-full grid-cols-4 grid-rows-2 ">
+    <div className="relative overflow-hidden bg-primary-500">
+      <div className="grid w-full h-full grid-cols-4 max-[425px]:grid-cols-2 max-[850px]:grid-cols-3 grid-rows-2 ">
         {product &&
           product.map((item) => (
             <div
@@ -32,20 +48,24 @@ const SuggestProduct = ({ lng }) => {
               className="relative w-full h-full overflow-hidden text-xl cursor-pointer font-primary"
               onMouseOut={(e) => {
                 e.preventDefault();
-                document.getElementById(`${item?._id}-image`).classList.remove(`scale-110`);
-                document.getElementById(`${item._id}`).classList.add(`opacity-0`);
+                if (window.innerWidth > 425) {
+                  document.getElementById(`${item?._id}-image`).classList.remove(`scale-110`);
+                  document.getElementById(`${item._id}`).classList.add(`opacity-0`);
+                }
               }}
               onMouseOver={(e) => {
                 e.preventDefault();
-                document.getElementById(`${item?._id}-image`).classList.add(`scale-110`);
-                document.getElementById(`${item._id}`).classList.remove(`opacity-0`);
+                if (window.innerWidth > 425) {
+                  document.getElementById(`${item?._id}-image`).classList.add(`scale-110`);
+                  document.getElementById(`${item._id}`).classList.remove(`opacity-0`);
+                }
               }}
               onClick={() => router.push(`/${lng}/product/${item._id}`)}>
               <div
                 id={item?._id}
-                className="absolute bottom-0 z-30 flex flex-col items-center w-full py-2 transition-opacity duration-500 bg-white opacity-0 bg-opacity-40 backdrop-blur ">
-                <h1>{item?.name}</h1>
-                <h1>{Thai.format(item?.price)}</h1>
+                className="absolute bottom-0 z-30 flex flex-col items-center w-full py-2 transition-opacity duration-500 bg-white lg:opacity-0 max-[425px]:opacity-100 bg-opacity-40 backdrop-blur max-[850px]:backdrop-opacity-80 text-center max-h-16 max-[425px]:text-lg  ">
+                <p className="w-full px-2 truncate">{item?.name}</p>
+                <p className="w-full px-2 truncate">{Thai.format(item?.price)}</p>
               </div>
               <Image
                 id={`${item?._id}-image`}
@@ -62,14 +82,6 @@ const SuggestProduct = ({ lng }) => {
               />
             </div>
           ))}
-        {/* <div className="w-full h-full bg-light-700"></div>
-        <div className="w-full h-full bg-light-800"></div>
-        <div className="w-full h-full bg-light-900"></div>
-        <div className="w-full h-full bg-light-100"></div>
-        <div className="w-full h-full bg-light-200"></div>
-        <div className="w-full h-full bg-light-300"></div>
-        <div className="w-full h-full bg-light-400"></div>
-        <div className="w-full h-full bg-light-500"></div> */}
       </div>
     </div>
   );

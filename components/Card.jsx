@@ -24,20 +24,24 @@ const Card = ({ img, alt, height, data, lng }) => {
       style={{ height: height }}
       onMouseOut={(e) => {
         e.preventDefault();
-        document.getElementById(`${data?._id}-image`).classList.remove(`scale-110`);
-        document.getElementById(`${data._id}`).classList.add(`opacity-0`);
+        if (window.innerWidth > 425) {
+          document.getElementById(`${data?._id}-image`).classList.remove(`scale-110`);
+          document.getElementById(`${data._id}`).classList.add(`md:opacity-0`);
+        }
       }}
       onMouseOver={(e) => {
         e.preventDefault();
-        document.getElementById(`${data?._id}-image`).classList.add(`scale-110`);
-        document.getElementById(`${data._id}`).classList.remove(`opacity-0`);
+        if (window.innerWidth > 425) {
+          document.getElementById(`${data?._id}-image`).classList.add(`scale-110`);
+          document.getElementById(`${data._id}`).classList.remove(`md:opacity-0`);
+        }
       }}
       onClick={() => router.push(`/${lng}/product/${data._id}`)}>
       <div
         id={data?._id}
-        className="absolute bottom-0 z-30 flex flex-col items-center w-full py-2 transition-opacity duration-500 bg-white opacity-0 bg-opacity-40 backdrop-blur ">
-        <h1>{data?.name}</h1>
-        <h1>{Thai.format(data?.price)}</h1>
+        className="absolute bottom-0 z-30 flex flex-col items-center w-full py-2 transition-opacity duration-500 bg-white max-md:opacity-100 max-[425px]:text-base  md:opacity-0   bg-opacity-40 backdrop-blur  max-[850px]:backdrop-opacity-80 md:h-[76px] md:leading-4  max-[425px]:max-h-14 leading-3 tracking-wider ">
+        <h1 className="w-full px-4 md:px-8 truncate text-2xl max-[425px]:text-base">{data?.name}</h1>
+        <h1 className="w-full px-4 md:px-8 truncate max-[425px]:text-base">{Thai.format(data?.price)}</h1>
       </div>
       <Image
         src={img}

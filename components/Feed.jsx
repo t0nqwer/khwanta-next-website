@@ -19,21 +19,29 @@ const Feed = ({ lng }) => {
 
   useEffect(() => {
     fetchData();
-    setHeight((windowWidth / 4 / 3) * 4);
-  }, []);
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
+    if (window.innerWidth <= 425 && window.innerWidth < 850) {
+      setHeight((windowWidth / 2 / 3) * 4);
+    }
+    if (window.innerWidth < 850 && window.innerWidth > 425) {
+      setHeight((windowWidth / 3 / 3) * 4);
+    }
+    if (window.innerWidth >= 850) {
       setHeight((windowWidth / 4 / 3) * 4);
-    };
-    window.addEventListener("resize", handleWindowResize);
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  });
+    }
+  }, []);
+  // useEffect(() => {
+  //   const handleWindowResize = () => {
+  //     setWindowWidth(window.innerWidth);
+  //     setHeight((windowWidth / 4 / 3) * 4);
+  //   };
+  //   window.addEventListener("resize", handleWindowResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleWindowResize);
+  //   };
+  // });
   return (
     <>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-4 max-md:grid-cols-3 max-[425px]:grid-cols-2">
         {Products.map((item) => (
           <div key={item._id}>
             <Card lng={lng} img={item?.image[0].url} alt={item?.name} height={height} data={item} />

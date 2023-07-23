@@ -21,34 +21,36 @@ const FooterHome = ({ lng }) => {
   }, []);
   return (
     <div className="h-full pt-10 bg-light-400">
-      <div className="grid grid-cols-2 px-20 text-2xl text-center font-primary">
+      <div className="grid grid-cols-2  max-[425px]:grid-cols-1 max-[425px]:px-5 px-20 text-2xl text-center font-primary">
         <div className="w-full tracking-wider">
           <h1 className="px-16 py-5 text-4xl ">เมนู</h1>
-          <p className="cursor-pointer hover:underline" onClick={() => router.push(`${lng}/catalog`)}>
-            แคตตาล็อกสินค้า
-          </p>
-          <p className="cursor-pointer hover:underline" onClick={() => router.push(`${lng}/history`)}>
-            เรื่องราวแบรนด์ขวัญตา
-          </p>
-          <p className="cursor-pointer hover:underline" onClick={() => router.push(`${lng}/policy`)}>
-            นโยบายจัดส่งสินค้า/การคืนเงิน/และการเปลี่ยนคืนหรือยกเลิกสินค้า
-          </p>
+          <ul className="">
+            <li className="py-2 cursor-pointer hover:underline " onClick={() => router.push(`${lng}/catalog`)}>
+              แคตตาล็อกสินค้า
+            </li>
+            <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/history`)}>
+              เรื่องราวแบรนด์ขวัญตา
+            </li>
+            <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/policy`)}>
+              นโยบายจัดส่งสินค้า/การคืนเงิน/และการเปลี่ยนคืนหรือยกเลิกสินค้า
+            </li>
+          </ul>
         </div>
         <div className="w-full ">
-          <h1 className="px-16 py-5 text-4xl text-left">ช่องทางการติดต่อ</h1>
-          <div className="">
+          <h1 className="px-16 max-[425px]:px-1 py-5 text-4xl text-left max-[425px]:text-center">ช่องทางการติดต่อ</h1>
+          <div className="max-[425px]:text-center">
             {about && (
               <>
-                <div className="flex space-x-6">
-                  <h1 className="w-20 text-right">สถานที่ :</h1>
+                <div className="flex max-[425px]:flex-col max-[425px]:space-x-0 space-x-6">
+                  <h1 className="w-20 text-right max-[425px]:w-full max-[425px]:text-center text-lg">สถานที่ :</h1>
                   <h1 className="">{about.address}</h1>
                 </div>
-                <div className="flex space-x-6">
-                  <h1 className="w-20 text-right">โทรศัพท์ :</h1>
+                <div className="flex max-[425px]:flex-col max-[425px]:space-x-0 space-x-6">
+                  <h1 className="w-20 text-right max-[425px]:w-full max-[425px]:text-center text-lg">โทรศัพท์ :</h1>
                   <h1 className="">{about.tel}</h1>
                 </div>
-                <div className="flex space-x-6">
-                  <h1 className="w-20 text-right">อีเมล์ :</h1>
+                <div className="flex max-[425px]:flex-col max-[425px]:space-x-0 space-x-6">
+                  <h1 className="w-20 text-right max-[425px]:w-full max-[425px]:text-center text-lg">อีเมล์ :</h1>
                   <h1 className="">{about.email}</h1>
                 </div>
               </>

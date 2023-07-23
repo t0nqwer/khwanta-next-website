@@ -5,6 +5,7 @@ import useNavBar from "@Zustand/navbarMenu";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import SvgComponent from "./Logo";
+import { useEffect } from "react";
 
 const Tenor = Tenor_Sans({ subsets: ["latin"], weight: "400" });
 const NavBar = ({ lng }) => {
@@ -15,23 +16,32 @@ const NavBar = ({ lng }) => {
   const setColor = useNavBar((state) => state.setColor);
   const color = useNavBar((state) => state.color);
   const isNavShow = useNavBar((state) => state.isNavShow);
+  useEffect(() => {
+    if (isScrolled) {
+      setTimeout(() => document.getElementById("khwantalogotext")?.classList.remove("opacity-0"), 100);
+    } else {
+      if (isNavShow) {
+        document.getElementById("khwantalogotext")?.classList.add("opacity-0");
+      }
+    }
+  }, [isScrolled]);
 
   return (
     <>
       {isNavShow && (
         <div
-          className={`${Tenor.className} fixed z-[300] px-10 max-lg:px-5 ${
+          className={`${Tenor.className} fixed z-[300] px-10 max-lg:px-5 max-[425px]:px-2 ${
             isScrolled
-              ? "h-[60px] text-primary-500 bg-white bg-opacity-30  backdrop-blur-md"
+              ? "h-[60px] text-primary-500 bg-light-500 bg-opacity-30  backdrop-blur-md"
               : `h-[120px] text-${color ? color : "white"} `
           } flex justify-center w-full items-center   transition-all `}>
           <div
-            className={` flex justify-between w-4/5  h-full ${
+            className={` flex max-[450px]:justify-center justify-between w-4/5 max-[425px]:w-full  h-full ${
               isScrolled ? "border-b-0" : `${color ? "" : ""} border-white`
             }  items-center`}>
             {/* menu */}
             <div
-              className="w-52 max-md:hidden parent z-[200] "
+              className="w-52 max-[450px]:absolute  max-[450px]:left-0 max-[450px]:w-fit   parent z-[200] "
               onClick={() => {
                 setIsactive();
                 setScrolled(true);
@@ -44,9 +54,11 @@ const NavBar = ({ lng }) => {
                 }  z-[200] `}></div>
             </div>
             {/* logo */}
+
             {isScrolled ? (
               <a
-                className={` text-4xl tracking-widest drop-shadow-md align-middle h-fit w-full text-center select-none cursor-pointer`}
+                id="khwantalogotext"
+                className={`max-[425px]:w-fit text-4xl opacity-0 transition-all duration-300 max-[425px]:text-3xl tracking-widest drop-shadow-lg align-middle h-fit w-full text-center  select-none cursor-pointer text-shadow-lg`}
                 onClick={() => router.push("/")}>
                 KHWANTA
               </a>
