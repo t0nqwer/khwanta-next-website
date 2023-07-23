@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useNavBar from "@Zustand/navbarMenu";
+import { rgbDataURL } from "@utils/blurimage";
 
 const image = ["/web-5.png", "/web-6.png", "/web-7.png", "/web-8.png"];
 const Hero = ({ lng }) => {
@@ -75,6 +76,8 @@ const Hero = ({ lng }) => {
             sizes="100vw"
             style={{ width: "100%", height: "100%", objectFit: "contain" }}
             loading="lazy"
+            placeholder="blur"
+            blurDataURL={rgbDataURL(161, 0, 14)}
             className="h-full transition-all duration-700 opacity-0 "
             onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           />
@@ -83,7 +86,7 @@ const Hero = ({ lng }) => {
       <div id="" className="top-0 left-0 z-50 flex items-center justify-center w-full h-full ">
         <div className=" transition-all tracking-widest text-center align-middle bg-light-300 bg-opacity-0  cursor-pointer select-none text-primary-500 font-secondary text-[150px] drop-shadow-lg ">
           {!isScrolled && (
-            <h1 id="khwanta" className="">
+            <h1 id="khwanta" className="transition-all ">
               KHWANTA
             </h1>
           )}
