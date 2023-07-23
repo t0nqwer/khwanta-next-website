@@ -2,6 +2,7 @@ import { Schema, model, models } from "mongoose";
 import Fabric from "@model/fabric";
 import Brand from "@model/brand";
 import Category from "@model/category";
+import ProductSet from "@model/productSet";
 
 const subImageSchema = new Schema({
   url: { type: String, required: true },
@@ -11,6 +12,9 @@ const subImageSchema = new Schema({
 const subDetailSchema = new Schema({
   id: { type: String, required: true },
   detail: { type: String, required: true },
+});
+const subRelatedSchema = new Schema({
+  related: { type: Schema.Types.ObjectId, ref: "Product" },
 });
 const ProductSchema = new Schema({
   id: {
@@ -30,6 +34,7 @@ const ProductSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: Category },
   brand: { type: Schema.Types.ObjectId, ref: Brand },
   size: { type: Array, required: true },
+  set: { type: Schema.Types.ObjectId, ref: ProductSet },
 });
 
 const Product = models.Product || model("Product", ProductSchema);

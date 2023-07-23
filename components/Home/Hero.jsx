@@ -35,7 +35,6 @@ const Hero = ({ lng }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      console.log(new Date());
       setCurrentImage(image[Math.floor(Math.random() * image.length)]);
     }, 5000);
     return () => clearInterval(intervalId);

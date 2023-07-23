@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import useSideBar from "@Zustand/sidebarMenu";
 import useIsLoading from "@Zustand/isLoading";
-import { MdOutlineEdit, MdClose, MdAdd, MdRefresh } from "react-icons/md";
+import { MdOutlineEdit, MdClose, MdAdd, MdRefresh, MdOutlineCheck } from "react-icons/md";
 import { FiSave } from "react-icons/fi";
 import Image from "next/image";
 import toast from "react-hot-toast";
@@ -34,6 +34,8 @@ const page = ({ params }) => {
   const [backUrl, setBackUrl] = useState("");
   const setMenu = useSideBar((state) => state.setMenu);
   const setIsLoading = useIsLoading((state) => state.setIsLoading);
+  const [addSetModal, setAddSetModal] = useState(true);
+  const [productSet, setProductSet] = useState("");
   //FUNCTION
   const fetchData = async () => {
     setIsLoading(true);
@@ -292,6 +294,7 @@ const page = ({ params }) => {
       setIsLoading(false);
     }
   };
+  const addSet = async () => {};
   //useEFFECT
   useEffect(() => {
     fetchData();
@@ -320,7 +323,34 @@ const page = ({ params }) => {
   const infoClass = " text-2xl grow   pr-3 text-white";
   const inputcss = "w-full bg-primary-400 p-5 rounded-md text-light-500 outline-none text-lg font-semibold";
   return (
-    <div className="p-10 bg-light-400 font-primary ">
+    <div className="relative p-10 bg-light-400 font-primary ">
+      {addSetModal && (
+        <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-screen bg-black bg-opacity-20 backdrop-blur">
+          <div className="w-[400px] h-[200px] bg-light-200 flex flex-col justify-center space-y-3">
+            <h1 className="w-full text-center">กรอกชื่อเซ็ท</h1>
+            <input
+              type="text"
+              className="p-1 mx-10 text-center rounded-md outline-none bg-primary-400 text-light-500"
+              onChange={(e) => setProductSet(e.target.value)}
+            />
+            <div className="flex justify-center space-x-16">
+              <button className="p-2 text-green-500 transition-colors duration-300 rounded-full hover:bg-green-500 hover:text-light-400">
+                <MdOutlineCheck
+                  className="w-5 h-5 "
+                  onClick={() => {
+                    console.log("ttt");
+                    setAnswer(true);
+                  }}
+                />
+              </button>
+              <button className="p-2 text-red-500 transition-colors duration-300 rounded-full hover:bg-red-500 hover:text-light-400">
+                <MdClose className="w-5 h-5" onClick={() => setAddSetModal(false)} />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div>
         <h1 className="text-4xl text-primary-500">ข้อมูลสินค้า</h1>
         <div className="grid w-full grid-cols-2 p-5 mt-3 rounded-lg bg-primary-600">
@@ -615,6 +645,21 @@ const page = ({ params }) => {
                   </div>
                 );
               })}
+          </div>
+        </div>
+        <div className="border-b-[1px] border-primary-500 pt-5 pb-6 w-full">
+          <div className="flex items-center justify-between">
+            <h1 className="text-3xl tracking-widest font-primary text-primary-400">เซ็ทสินค้า</h1>
+            <button
+              className="px-3 py-2 text-xl rounded-full text-primary-500 hover:bg-primary-500 hover:text-light-500 active:bg-primary-700 active:text-primary-700"
+              onClick={() => {
+                setAddSetModal(true);
+              }}>
+              <MdAdd />
+            </button>
+          </div>
+          <div>
+            <input type="text" className={inputcss} />
           </div>
         </div>
       </div>

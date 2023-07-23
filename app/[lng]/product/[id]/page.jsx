@@ -68,10 +68,6 @@ const page = ({ params: { id } }) => {
       id="maindiv"
       className="relative flex flex-col w-full overflow-x-hidden overflow-y-auto lg:flex-row snap-y"
       onScroll={handleScroll}>
-      <div className="relative z-50 shrink-0 ">
-        {" "}
-        <SuggestProduct />
-      </div>
       <div className="relative w-full shrink-0 lg:h-screen ">
         <div className="w-1/2">
           {product?.image.map((image) => {
@@ -98,7 +94,10 @@ const page = ({ params: { id } }) => {
           })}
         </div>
         {/* {window.innerWidth < 1024 ? <ImageSlider images={Images} /> : ""} */}
-        <div className="relative z-50 h-screen bg-white shrink-0 "></div>
+        <div className="relative z-50 h-screen bg-white shrink-0 ">
+          <div>LinkProduct</div>
+          <div>SuggestProduct</div>
+        </div>
       </div>
 
       <div className="sticky top-0 right-0 flex items-center justify-center w-1/2 bg-white shrink-0 lg:h-screen ">
@@ -115,7 +114,7 @@ const page = ({ params: { id } }) => {
           <div className="mt-5 border-t border-black border-1"></div>
           <div className="mt-4 text-sm text-neutral-500">
             {product?.detail.map((e) => (
-              <div> - {e.detail}</div>
+              <div key={e._id}> - {e.detail}</div>
             ))}
           </div>
           <button

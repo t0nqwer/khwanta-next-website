@@ -47,7 +47,7 @@ export default function Page({ params: { lng } }) {
         <Hero lng={lng} />
       </div>
       <div className="w-full h-screen snap-start ">
-        <SuggestProduct />
+        <SuggestProduct lng={lng} />
       </div>
       <div className="w-full h-screen snap-center">
         <BrandStory />
