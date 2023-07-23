@@ -28,6 +28,7 @@ const BrandStory = () => {
           <div className="w-4/5 h-[290px] mx-auto">
             <Image
               src="/2142019_190422_0209 - Copy.jpg"
+              alt="แนวคิดการออกแบบ Khwanta"
               width={0}
               height={0}
               sizes="100vw"
@@ -49,6 +50,7 @@ const BrandStory = () => {
           <div className="w-4/5 h-[290px] mx-auto">
             <Image
               src="/DSC00158.jpg"
+              alt="งานฝีมือจากชาวบ้านในชุมชน Khwanta"
               width={0}
               height={0}
               sizes="100vw"
