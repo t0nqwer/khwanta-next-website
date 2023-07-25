@@ -25,13 +25,13 @@ const FooterHome = ({ lng }) => {
         <div className="w-full tracking-wider">
           <h1 className="px-16 py-5 text-4xl ">เมนู</h1>
           <ul className="">
-            <li className="py-2 cursor-pointer hover:underline " onClick={() => router.push(`${lng}/catalog`)}>
+            <li className="py-2 cursor-pointer hover:underline " onClick={() => router.push(`/${lng}/catalog`)}>
               แคตตาล็อกสินค้า
             </li>
             {/* <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/history`)}>
               เรื่องราวแบรนด์ขวัญตา
             </li> */}
-            <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`${lng}/policy`)}>
+            <li className="py-2 cursor-pointer hover:underline" onClick={() => router.push(`/${lng}/policy`)}>
               นโยบายจัดส่งสินค้า/การคืนเงิน/และการเปลี่ยนคืนหรือยกเลิกสินค้า
             </li>
           </ul>
