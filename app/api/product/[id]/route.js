@@ -12,10 +12,15 @@ export const GET = async (request, { params }) => {
 export const PUT = async (request, { params }) => {
   const { image, description, detail } = await request.json();
   try {
+    console.log(params.id);
     await connectToDatabase();
-    const data = await Product.updateOne({ _id: params.id }, { image, description, detail });
+    const data = await Product.updateOne(
+      { _id: params.id },
+      { image: image, description: description, detail: detail }
+    );
     return new Response(JSON.stringify(data), { status: 201 });
   } catch (error) {
+    console.log(error);
     return new Response(JSON.stringify(error), { status: 500 });
   }
 };

@@ -7,7 +7,7 @@ export const GET = async (request, { params }) => {
   const page = Number(searchParams.get("page"));
   const query = searchParams.get("query") || "";
   const search = searchParams.get("search") || "";
-  console.log(page);
+
   try {
     await connectToDatabase();
     const data = await Product.find().populate("category fabric");

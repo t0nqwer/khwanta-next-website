@@ -11,7 +11,6 @@ export const GET = async (request, { params }) => {
   try {
     await connectToDatabase();
     const data = await Product.find().select("id");
-    console.log(data);
 
     const filter = data ? data.map((e) => +e.id) : [];
     const response = await fetch(`${url}/web/NewWeb?search=${search}&page=${page}&query=${query}`, {

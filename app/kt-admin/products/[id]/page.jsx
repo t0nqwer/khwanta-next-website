@@ -11,6 +11,7 @@ import { storage } from "@utils/firebase";
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { url } from "@utils/URL";
 import { useRouter } from "next/navigation";
+import SizeTable from "@components/SizeTable";
 const links = [
   {
     title: "Back",
@@ -32,9 +33,11 @@ const page = ({ params }) => {
   const [Back, setBack] = useState();
   const [frontUrl, setFrontUrl] = useState("");
   const [backUrl, setBackUrl] = useState("");
+  const [Sizedata, setSizedata] = useState([]);
+  const [SizeList, setSizeList] = useState([]);
   const setMenu = useSideBar((state) => state.setMenu);
   const setIsLoading = useIsLoading((state) => state.setIsLoading);
-  const [addSetModal, setAddSetModal] = useState(true);
+  const [addSetModal, setAddSetModal] = useState(false);
   const [productSet, setProductSet] = useState("");
   //FUNCTION
   const fetchData = async () => {
@@ -43,6 +46,9 @@ const page = ({ params }) => {
     const data = await response.json();
     console.log(data);
     if (response.ok) {
+      const arr = [{ Size_ID: "" }];
+      setSizeList(arr.concat(data?.size.map((e) => e)));
+      setSizedata(data?.size[0]?.Size_De_Info);
       setProduct(data);
       setIsLoading(false);
       setBackUrl(data.image[1].url);
@@ -274,7 +280,6 @@ const page = ({ params }) => {
       setIsLoading(false);
     }
   };
-
   const saveProduct = async (data) => {
     setIsLoading(true);
     console.log(data);
@@ -295,6 +300,36 @@ const page = ({ params }) => {
     }
   };
   const addSet = async () => {};
+  const getSize = async () => {
+    setIsLoading(true);
+    const response = await fetch(`${url}/web/sizeDetail/${Product.code}`);
+    if (response.ok) {
+      const data = await response.json();
+      const res = await fetch(`/api/product/size`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          size: data.Size,
+          id: Product.id,
+        }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+        const arr = [{ Size_ID: "" }];
+        setSizeList(arr.concat(data?.size.map((e) => e)));
+        setSizedata(data?.size[0]?.Size_De_Info);
+        setProduct(data);
+        toast.success("โหลดข้อมูลไซส์เรียบร้อย");
+        setIsLoading(false);
+      }
+    } else {
+      setIsLoading(false);
+      toast.error("ไม่สามารถโหลดข้อมูลไซส์ได้");
+    }
+  };
   //useEFFECT
   useEffect(() => {
     fetchData();
@@ -607,6 +642,7 @@ const page = ({ params }) => {
                 className="px-3 py-2 text-xl rounded-full text-primary-500 hover:bg-primary-500 hover:text-light-500 active:bg-primary-700 active:text-primary-700"
                 onClick={getDetailImage}>
                 <MdRefresh />
+
                 {/* <input type="file" className="hidden" onChange={getDetailImage} /> */}
               </button>
             </div>
@@ -647,6 +683,7 @@ const page = ({ params }) => {
               })}
           </div>
         </div>
+        {/* ProductSet */}
         <div className="border-b-[1px] border-primary-500 pt-5 pb-6 w-full">
           <div className="flex items-center justify-between">
             <h1 className="text-3xl tracking-widest font-primary text-primary-400">เซ็ทสินค้า</h1>
@@ -660,6 +697,30 @@ const page = ({ params }) => {
           </div>
           <div>
             <input type="text" className={inputcss} />
+          </div>
+        </div>
+        {/* Size */}
+        <div className="border-b-[1px] border-primary-500 pt-5 pb-6 w-full">
+          <div className="flex items-center space-x-5 ">
+            <h1 className="text-3xl tracking-widest font-primary text-primary-400">Size</h1>
+            <button
+              className="flex items-center px-3 py-2 text-xl rounded-full text-primary-500 hover:bg-primary-500 hover:text-light-500 active:bg-primary-700 active:text-primary-700"
+              onClick={() => {
+                getSize();
+              }}>
+              <MdRefresh />
+              โหลดข้อมูลไซส์
+            </button>
+          </div>
+          <div className="">
+            <SizeTable
+              data={Product}
+              SizeList={SizeList}
+              Sizedata={Sizedata}
+              font={"text-3xl"}
+              fontsmall={"text-2xl"}
+              color={"text-primary-500"}
+            />
           </div>
         </div>
       </div>

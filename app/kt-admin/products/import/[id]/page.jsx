@@ -12,6 +12,7 @@ import { FiCamera } from "react-icons/fi";
 import { storage } from "@utils/firebase";
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "firebase/storage";
 import { useRouter } from "next/navigation";
+import SizeTable from "@components/SizeTable";
 const links = [
   {
     title: "Back",
@@ -34,6 +35,8 @@ const page = ({ params }) => {
   const [Back, setBack] = useState();
   const [frontUrl, setFrontUrl] = useState("");
   const [backUrl, setBackUrl] = useState("");
+  const [Sizedata, setSizedata] = useState([]);
+  const [SizeList, setSizeList] = useState([]);
   const setMenu = useSideBar((state) => state.setMenu);
   const setIsLoading = useIsLoading((state) => state.setIsLoading);
   const inputcss = "w-full bg-primary-400 p-5 rounded-md text-light-500 outline-none text-lg font-semibold";
@@ -50,6 +53,9 @@ const page = ({ params }) => {
       show: false,
     }));
     setImage(image);
+    const arr = [{ Size_ID: "" }];
+    setSizeList(arr.concat(data?.design.Size.map((e) => e)));
+    setSizedata(data?.design.Size[0]?.Size_De_Info);
     setProduct({ ...data, Description_Web: "", ProductDetail: [] });
     setBackUrl(data.Back_img);
     setFrontUrl(data.Front_img);
@@ -259,7 +265,6 @@ const page = ({ params }) => {
       const fileRef = ref(storage, `${type}/front/${Product.code}${Product.fabric.Fabric_ID}front`);
       const uploadTaskSnapshot = await uploadBytes(fileRef, file, metadata);
       getDownloadURL(uploadTaskSnapshot.ref).then((url) => {
-        log;
         toast.success("เปลี่ยนรูปเรียบร้อย");
         fetchData();
       });
@@ -563,9 +568,15 @@ const page = ({ params }) => {
               })}
           </div>
         </div>
-        <div className="border-b-[1px] pt-5 pb-6 w-full">
-          <h1 className="text-3xl tracking-widest font-primary text-light-400">ข้อมูลภาษาอังกฤษ</h1>
-          <textarea className={`${inputcss} `} disabled={true} placeholder="Coming Soon" type="text" />
+        <div className="border-b-[1px] pt-5 pb-6 flex justify-center w-full">
+          <SizeTable
+            data={{ size: Product?.design?.Size }}
+            SizeList={SizeList}
+            Sizedata={Sizedata}
+            font={"text-3xl"}
+            fontsmall={"text-xl"}
+            color={"text-light-400"}
+          />
         </div>
       </div>
       <div className="flex justify-end w-full mt-3 mb-10 ">
